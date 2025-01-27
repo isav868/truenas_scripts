@@ -35,7 +35,7 @@ chmod +x $SVC_FILE
 # ENABLE SERVICE
 sysrc ${SVC_NAME}_enable=yes
 
-tar zxf "$SVC_SRC" -C $SVC_DIR --include "*/$SVC_NAME" --strip-components 1
+tar zxf "$SVC_SRC" -C $SVC_DIR --include "*/$SVC_NAME" --strip-components 1 --no-same-owner --no-same-permissions
 rm -f "$SVC_SRC"
 chmod u=rwx,go=rx "$SVC_PATH"
 
