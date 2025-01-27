@@ -35,6 +35,10 @@ chmod +x $SVC_FILE
 # ENABLE SERVICE
 sysrc ${SVC_NAME}_enable=yes
 
+# STOP SERVICE BEFORE BINARY FILE MODIFICATION
+service $SVC_NAME stop
+
+# EXTRACT SERVICE BINARY FILE
 tar zxf "$SVC_SRC" -C $SVC_DIR --include "*/$SVC_NAME" --strip-components 1 --no-same-owner --no-same-permissions
 rm -f "$SVC_SRC"
 chmod u=rwx,go=rx "$SVC_PATH"
