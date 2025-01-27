@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 SVC_NAME=smartctl_exporter
 SVC_SRC=smartctl_exporter-0.13.0.freebsd-amd64.tar.gz
 SVC_DIR=/usr/local/sbin/
@@ -40,7 +42,6 @@ service $SVC_NAME stop
 
 # EXTRACT SERVICE BINARY FILE
 tar zxf "$SVC_SRC" -C $SVC_DIR --include "*/$SVC_NAME" --strip-components 1 --no-same-owner --no-same-permissions
-rm -f "$SVC_SRC"
 chmod u=rwx,go=rx "$SVC_PATH"
 
 service $SVC_NAME start
